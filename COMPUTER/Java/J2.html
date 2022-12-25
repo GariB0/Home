@@ -1,0 +1,259 @@
+<html>
+<head>
+	<title>JavaScript</title>
+        <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+	<h1 style="text-align:center;"> Types, Values, and Variables </h1>
+
+	<nav>
+		<ul>
+			<li>
+				<a href="#C1"> 1. Numbers </a>
+			</li>
+			<li>
+				<a href="#C2"> 2. Text </a>
+			</li>
+			<li>
+				<a href="#C3"> 3. Boolean Values </a>
+			</li>
+			<li>
+				<a href="#C4"> 4. Null and undefined </a>
+			</li>
+			<li>
+				<a href="#C5"> 5. The Global Object </a>
+			</li>
+			<li>
+				<a href="#C6"> 6. Wrapper Objects </a>
+			</li>
+			<li>
+				<a href="#C7"> 7. Immutable Primitive Values & Mutable Object References </a>
+			</li>
+			<li>
+				<a href="#C8"> 8. Type Conversions </a>
+			</li>
+			<li>
+				<a href="#C9"> 9. Variable Declaration </a>
+			</li>
+			<li>
+				<a href="#C10"> 10. Variable Scope </a>
+			</li>
+		</ul>
+	</nav>
+	<section>
+		<h1> Learning Order </h1>
+		<p class="para"> JavaScript types can be divided into two categories: primitive types and object types.<br>
+			Primitive types include numbers, strings of text (known as strings), and Boolean truth values (known as booleans).<br>
+			The special JavaScript values null and undefined are primitive values, but they are not numbers, strings, or booleans.
+			Any JavaScript value that is not a number, a string, a boolean, or null or undefined is an object. <br>
+			An object (that is, a member of the type object) is a collection of properties where each property has a name and a value (either a primitive value, such as a number
+or string, or an object). <br>
+		</p>
+
+		<h2><a id="C1"> 1. Numbers  </a></h2>
+		<p> All numbers in JavaScript are represented as floating-point
+			values. JavaScript represents numbers using the 64-bit floating-point format defined
+			by the IEEE 754 standard, which means it can represent numbers as large as <a class="math">
+				&plusmn;1.7976931348623157&times;10<sup>308</sup>
+			</a> and as small as <a class="math">
+				&plusmn;5&times;10<sup>-324</sup>
+			</a>. The JavaScript number format allows you to exactly represent all integers between <a class="math">
+				&plusmn;-2<sup>53</sup>
+			</a> and <a class="math">
+				&plusmn;2<sup>53</sup>
+			</a>, inclusive. <br>
+			If you use integer values larger than this, you may lose precision in the trailing digits.<br>
+			<a class="additional">
+				* Note that certain operations in JavaScript, such as array indexing and the bitwise operators, are performed with 32-bit integers.<br>
+			</a>
+			<a class="additional">
+				* When a number appears directly in a JavaScript program, it’s called a numeric literal.<br>
+			</a>
+			</p>
+			<p>
+			<a style="font-weight:bold"> 1) Integer Literals </a><br> 
+			<span class="para"> 
+				In a JavaScript program, a base-10 integer is written as a sequence of digits. <br>
+				In addition to base-10 integer literals, JavaScript recognizes hexadecimal (base-16) values. <br>
+				A hexadecimal literal begins with “0x” or “0X”, followed by a string of hexadecimal digits. <br>
+				A hexadecimal digit is one of the digits 0 through 9 or the letters a (or A) through f (or F), which represent values 10 through 15.<br>
+			</span>
+			</p>
+			<p>
+			<a style="font-weight:bold"> 2) Floating-Point Literals</a><br> 
+			<span class="para"> 
+				Floating-point literals can have a decimal point; they use the traditional syntax for real numbers. <br>
+				Floating-point literals may also be represented using exponential notation: a real number followed by the letter e (or E), followed by an optional plus or minus sign, followed by an integer exponent. <br>
+				For example:<br>
+			</span>
+			<span class="ex">
+				3.14<br>
+				.333<br>
+				6.28e12(+exponential)<br>
+				1.23E-12(-exponetial)<br>
+				</span>
+				<a class="para">the syntax is: [digits][.digits][(E|e)(+|-)]digits]</a>
+			</p>
+			<p>
+				<a style="font-weight:bold"> 3) Arithmetic in JavaScript</a><br> 
+				<span class="para"> 
+					JavaScript programs work with numbers using the arithmetic operators that the language provides. <br>
+					These include + for addition, - for subtraction, * for multiplication, / for division, and % for modulo (remainder after division).<br>
+					For example:<br>
+				</span>
+				<table>
+					<tr class="tr1">
+						<td> Math object </td>
+						<td> Description </td>
+						<td> Math object </td>
+						<td> Description </td>
+					</tr>
+					<tr class="tr2"><td>Math.pow(10,2)</td><td>10 to the power 2</td><td>Math.</td><td>r</td></tr>
+					<tr class="tr2"><td>Math.round(.6)</td><td>round to the nearest integer</td><td>Math.</td><td>r</td></tr>
+					<tr class="tr2"><td>Math.</td><td>round up to an integer</td><td>Math.</td><td>r</td></tr>
+					<tr class="tr2"><td>Math.</td><td>round down to an integer</td><td>Math.</td><td>r</td></tr>
+					<tr class="tr2"><td>Math.</td><td>absolute value</td><td>Math.</td><td>r</td></tr>
+					<tr class="tr2"><td>Math.</td><td>Return the largest argument</td><td>Math.</td><td>r</td></tr>
+					<tr class="tr2"><td>Math.</td><td>Return the smallest argument</td><td>Math.</td><td>r</td></tr>
+					<tr class="tr2"><td>Math.</td><td>round to the nearest integer</td><td>Math.</td><td>r</td></tr>
+					<tr class="tr2"><td>Math.</td><td>Pseudo-random number x where [0,1]</td><td>Math.</td><td>r</td></tr>
+					<tr class="tr2"><td>Math.</td><td>circumference of a circle / diameter</td><td>Math.</td><td>r</td></tr>
+					<tr class="tr2"><td>Math.</td><td>r</td><td>Math.</td><td>r</td></tr>
+				</table>
+				</p>
+				<p>
+					<a style="font-weight:bold"> 4) Binary Floating-Point and Rounding Errors</a><br> 
+					<span class="para"> 
+					</span>
+				</p>
+				<p>
+					<a style="font-weight:bold"> 5) Dates and Times</a><br> 
+					<span class="para"> 
+					</span>
+				</p>
+
+
+		<h2><a id="C2"> 2. Text </a></h2>
+		<p>
+			A string is an immutable ordered sequence of 16-bit values, each of which typically represents a Unicode character-strings are JavaScript's type for representing text. <br>
+			The length of a string is the number of 16-bit values it contains.<br>
+			JavaScript's strings (and its arrays) use zero-based indexing: the first 16-bit value is at position 0, the second at position 1 and so on.
+		</p>
+		<p>
+			<a style="font-weight:bold"> 1) String Literals </a><br> 
+			<span class="para"> 
+				To include a string literally in a JavaScript program, simply enclose the characters of the string within a matched pair of single or double quotes (' or ").<br>
+				In ECMAScript 5 you can break a string literal across multiple lines by ending each line but the last with a backslash (\).
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 2) Escape Sequences in String Literals </a><br> 
+			<span class="para"> 
+				Combined with the character that follows \n, it represents a character that is not otherwise representable within the string.<br>
+				JavaScript escape sequences
+				<table>
+					<tr class="tr1">
+						<td> Sequence </td>
+						<td> Character represented </td>
+						<td> Sequence </td>
+						<td> Character represented </td>
+					</tr>
+					<tr class="tr2"><td>\O</td><td>10 to the power 2</td><td>\O</td><td>r</td></tr>
+					<tr class="tr2"><td>\O</td><td>round to the nearest integer</td><td>\O</td><td>r</td></tr>
+					<tr class="tr2"><td>\O</td><td>round up to an integer</td><td>\O</td><td>r</td></tr>
+				</table>
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 3) Working with Strings </a><br> 
+			<span class="para"> 
+				One of the built-in features of JavaScript is the ability to concatenate strings. If you use the + operator with numbers, it adds them. <br>
+				To determine the length of a string(the number of 16-bit values it contains) use the length property of the string.<br>
+				For example:<br>
+			</span>
+			<span class="ex">
+				var char="Me and you"<br>
+				char.length  // return var length.<br>
+				</span>
+				<span class="para"> <br> Other useful properties </span>
+			<table>
+					<tr class="tr1">
+						<td> Example </td>
+						<td> description </td>
+						<td> Example </td>
+						<td> description </td>
+					</tr>
+					<tr class="tr2"><td>char.charAt(0)</td><td>10 to the power 2</td><td>char.charAt(0)</td><td>r</td></tr>
+					<tr class="tr2"><td>char.charAt(0)</td><td>round to the nearest integer</td><td>char.charAt(0)</td><td>r</td></tr>
+					<tr class="tr2"><td>char.charAt(0)</td><td>round up to an integer</td><td>char.charAt(0)</td><td>r</td></tr>
+				</table>
+			</span>
+			<span class="additional">* In ECMAScript 5, strings can be treated like read-only arrays, and you can access individual characters (16-bit values) from a string using square brackets
+		</span>
+			</p>
+		<p>
+				<a style="font-weight:bold"> 4) Pattern Matching </a><br> 
+				<span class="para"> 
+					JavaScript defines a RegExp() constructor for creating objects that represent textual patterns.<br>
+					These patterns are described with regular expressions, and JavaScript adopts Perl's syntax for regular expressions.<br>
+					Both strings and RegExp objects have methods for performing pattern matching and search-and-replace operations using regular expressions.
+				</span>
+		</p>
+
+		<h2><a id="C3"> 3. Boolean Values </a></h2>
+		<p>
+			A boolean value represents truth or falsehood, on or off, yes or no. There are only two possible values of this type.
+		</p>
+
+		
+		
+		<h2><a id="C4"> 4. null and undefined </a></h2>
+		<p>
+			null is a language keyword that evaluates to a special value that is usually used to indicate the absence of a value.
+		</p>
+
+		<h2><a id="C5"> 5. The Global Object </a></h2>
+		<p>
+			The global object is a regular JavaScript object that serves a very important purpose.<br>
+			The properties of this object are the globally defined symbols that are available to a JavaScript program.
+		</p>
+
+
+		<h2><a id="C6"> 6. Wrapper Objects </a></h2>
+		<p>
+			JavaScript objects are composite values: they are a collection of properties or named values. <br>
+			We refer to the value of a property using the . notation. <br>
+			<span class="para"> 
+			method: the value of a property is a function. To invoke the method m of an object o, we write o.m().
+			</span>
+		</p>
+
+		<h2><a id="C7"> 7. Immutable Primitive Values & Mutable Object References </a></h2>
+		<p>
+			Primitive values: undefined, null, booleans, numbers, and strings <br>
+			Objects: arrays and functions ...<br>
+			Difference:<br>
+			<span class="ex"> 
+			Primitives are immutable: there is no way to change (or "mutate") a primitive value. <br>
+			Primitives are also compared by value: two values are the same only if they have the same value.<br>
+			</span>
+		</p>
+		<h2><a id="C8"> 8. Type Conversions </a></h2>
+		<p>
+			JavaScript is very flexible about the types of values it requires.
+		</p>
+		<h2><a id="C9"> 9. Variable Declaration </a></h2>
+		<p>
+			JavaScript is very flexible about the types of values it requires.
+		</p>
+		<h2><a id="C10"> 10. Variable Scope</a></h2>
+		<p>
+			The scope of a variable is the region of your program source code in which it is defined.
+		</p>
+	</section>
+	<footer> </footer>
+	</div>
+
+</body>
+</html>

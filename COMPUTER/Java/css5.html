@@ -1,0 +1,330 @@
+﻿<html>
+<head>
+	<title>JavaScript</title>
+        <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+	<h1 style="text-align:center;"> The Floating & Positioning </h1>
+
+	<nav id="Index">
+		<ul>
+			<li>
+				<a href="#C1"> 1. Normal Flow & float </a>
+			</li>
+			<li>
+				<a href="#C2"> 2. Floating inline & block elements </a>
+			</li>
+			<li>
+				<a href="#C3"> 3. Multiple & Containing floats  </a>
+			</li>
+			<li>
+				<a href="#C4"> 4. Positioning Concepts </a>
+			</li>
+			<li>
+				<a href="#C5"> 5. Specifying position </a>
+			</li>
+			<li>
+				<a href="#C6"> 6. Stacking Order & Fixed position </a>
+			</li>
+		</ul>
+	</nav>
+	<section>
+		<h1> Learning Order </h1>
+		<h2><a id="C1"> 1. Normal Flow & float </a></h2>
+		<p>
+			Text elements are laid out from top to bottom in the order in which they appear in the source, and from left to right. <br>
+			Block elements stack up on top of one another and fill the available width of the browser window or other containing element. <br>
+			Inline elements and text characters line up next to one another to fill the block elements.<br>
+		</p>
+
+		<p>
+			<span class="ex">
+				Objects in the normal flow affect the layout of the objects around them. This is the behavior you’ve come to expect in web pages; elements don't overlap or bunch up.<br>
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 1) The float property </a><br>
+			The float property moves an element as far as possible to the left or right,<br>
+			allowing the following content to wrap around it.<br>
+			float Property:<br>
+		</p>
+		<p>
+			<span class="ex">
+				Values: left|right|none|inherit<br>
+				Default: none<br>
+				Applies to: all elements<br>
+				Inherits: no
+			</span>
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 2) example: default </a><br>
+			<span class="ex">
+				When Inline image in the normal flow(float:default) space next to the image is held clear.
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 3) example: right floating </a><br>
+			<span class="ex">
+				When Inline image floated to the right space, image moves over and text wraps around it.
+			</span>
+		</p>
+
+
+		<h2><a id="C2">  2. Floating inline & block elements  </a></h2>
+		<p>
+			With CSS, it is possible to float any HTML element, both inline and block-level.<br>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 1) Floating an inline text element </a><br>
+			<span class="ex">
+				Always provide a width for floated text elements.<br>
+				Floated inline elements behave as block elements.<br>
+				Margins on floated elements do not collapse.<br>
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 2) Floating block elements </a><br>
+			<span class="ex">
+				You must provide a width for floated block elements;<br>
+				If you do not provide a width value, the width of the floated block will be set to auto.<br>
+				Elements do not float higher than their reference in the source.<br>
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 3) Clearing floated elements </a><br>
+			Clear is to turn the block-level elemnts wrapping off and get back to layout as usual.
+			clear Property:<br>
+			<span class="ex">
+				Values: left|right|both|none|inherit<br>
+				Default: none<br>
+				Applies to: block-level elements only<br>
+				Inherits: no
+			</span>
+		</p>
+
+
+
+		<h2><a id="C3"> 3. Multiple & Containing floats </a></h2>
+		<p>
+			floating multiple elements: there is a complex system of behind-thescenes rendering rules that ensures floated elements do not overlap.<br>
+			containing floats: another float quirk.<br>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 1) Floating multiple elements</a><br>
+			When a series of sequential paragraphs are floated to the same side:<br>
+			<span class="ex">
+				The first three floats start stacking up from the left edge, but when there isn’t enough room for the fourth, it moves down and to the left until it bumps into something<br>
+				in this case, the edge of the browser window.<br>
+				* The other way to make list items line up is to make them display as inline elements instead of as block elements:{display: inline;}.<br>
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 2) Containing floats </a><br>
+			<span class="ex">
+				By default, floats are designed to hang out of the element they are contained in.<br>
+				The border stretched to contain all the content, however, the floated image hangs right out the bottom.<br>
+				And if you float all the elements in a container element there will be no elements remaining in the flow to hold the containing element open.<br>
+				* The other common solution is the overflow property instead of the float; <br>
+				Setting the overflow of the containing element to auto or hidden will also make it stretch to contain the floated elements.
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 3) Using floats to create columns </a><br>
+			For a two-column float, you can do the following:<br>
+			<span class="ex">
+				a. Float one div and add a wide margin on the side of the text element that wraps around it.<br>
+				b. Float both divs to the left or right.<br>
+				c. Float one div to the left and the second div to the right (or vice versa).<br>
+				* Three-column floats work basically the same way; there's just more calculating to do.<br>
+			</span>
+		</p>
+		<h2><a id="C4"> 4. Positioning Concept  </a></h2>
+		<p> CSS provides several methods for positioning elements on the page. </p>
+		<p>
+			<a style="font-weight:bold"> 1) Types of positioning </a><br>
+			The position property indicates that an element is to be positioned and specifies which positioning method to use.<br>
+			<span class="ex">
+				Static value is the normal positioning scheme in which elements are positioned as they occur in the normal document flow.<br>
+				Relative positioning moves the box relative to its original position in the flow.<br>
+				Absolutely positioned elements are removed from the document flow entirely and positioned with respect to the browser window or a containing element.<br>
+				The distinguishing characteristic of fixed positioning is that the element stays in one position in the window even when the document scrolls.<br>
+			</span>
+		</p>
+		<p>
+			position Property:<br>
+			<span class="ex">
+				Values: static|relative|absolute|fixed|inherit<br>
+				Default: static<br>
+				Applies to: allelements<br>
+				Inherits: no
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 2) Relative Positioning </a><br>
+			The values of the offset properties defines the distance the element should be moved away from that respective edge. <br>
+		</p>
+		<p>
+			offset properties(top,bottom,right,left):<br>
+			<span class="ex">
+				Values: length measurement|percentage|auto|inherit<br>
+				Default: auto<br>
+				Applies to: positioned elements(relative,absolute,or fixed)<br>
+				Inherits: no
+			</span>
+		</p>
+		<p>
+			Relative positioning moves an element relative to its original spot in the flow<br>
+			<span class="ex">
+				The space it would have occupied is preserved and continues to influence the layout of surrounding content.<br>
+				example: <br>
+				em {<br>
+				position: relative;<br>
+				top: 30px;<br>
+				left: 60px;<br>
+				}<br>
+				* Overlap happens.
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 3) Absolute Positioning </a><br>
+			It is actually a more flexible method for accurately placing items on the page than relative positioning.<br>
+		</p>
+		<p>
+			<span class="ex">
+				example: <br>
+				em {<br>
+				position: absolute;<br>
+				top: 30px;<br>
+				left: 60px;<br>
+				}<br>
+				* In its new position, the element box overlaps the surrounding content. In the end, absolutely positioned elements have no influence whatsoever on the layout
+				of surrounding elements. The most significant difference here, however, is the location of the positioned element. This time, the offset values position the em element 30 pixels
+				down and 60 pixels to the right of the top-left corner of the browser window.<br>
+				* Note that that the element is positioned relative to its nearest containing block.<br>
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 4) Containing blocks </a><br>
+			The position and size of an element's
+			box(es) are sometimes calculated relative to a certain rectangle.<br>
+			The recommendation lays out a number of intricate rules for determining
+			the containing block of an element:<br>
+		</p>
+		<p>
+			<span class="ex">
+				If the positioned element is not contained within another positioned element, then it will be placed relative to the initial containing block <br>
+				But if the element has an ancestor that has its position set to relative, absolute, or fixed, the element will
+				be positioned relative to the edges of that element instead.
+			</span>
+		</p>
+
+		<h2><a id="C5"> 5. Specifying position  </a></h2>
+		<p> It is to get better acquainted with the offset properties. </p>
+		<p>
+			<a style="font-weight:bold"> 1) Pixel measurements </a><br>
+			The positive offset values push the positioned element box away from the specified edge and toward the center of the containing
+			block.<br> If there is no value provided for a side, it is set to auto, and the browser
+			adds enough space to make the layout work.<br>
+		</p>
+		<p>
+			<span class="ex">
+				example:<br>
+				div#a {<br>
+				position: relative; /* creates the containing block */<br>
+				height: 120px;<br>
+				width: 300px;<br>
+				border: 1px solid;<br>
+				background-color: #CCC;<br>
+				}<br>
+				div#b {<br>
+				position: absolute;<br>
+				top: 20px;<br>
+				right: 30px;<br>
+				bottom: 40px;<br>
+				left: 50px;<br>
+				border: 1px solid;<br>
+				background-color: teal;<br>
+				}<br>
+			</span>
+		</p>
+		<p>
+			<span class="ex">
+				* Notice that by setting offsets on all four sides, I have indirectly set the dimensions
+				of the positioned div#b (it fills the 220 × 60 pixel space that is left over
+				within the containing block after the offset values are applied). If I had also
+				specified a width and other box properties for div#b, there is the potential
+				for conflicts if the total of the values for the positioned box and its offsets do
+				not match the available space within the containing block.
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 2) Percentage values </a><br>
+			You can also specify positions with percentage values.
+		</p>
+		<p>
+			<span class="ex">
+				example: <br>
+				img#A {<br>
+				position: absolute;<br>
+				top: 50%;<br>
+				left: 0%; /* the % symbol could be omitted for a 0 value */<br>
+				}<br>
+				img#B {<br>
+				position: absolute;<br>
+				bottom: 0%; /* the % symbol could be omitted for a 0 value */<br>
+				right: 0%; /* the % symbol could be omitted for a 0 value */<br>
+				}<br>
+			</span>
+		</p>
+
+		<p>
+			<span class="ex">
+				* Although the examples here specify both a vertical and horizontal offset, it
+				is common to provide just one offset for a positioned element, for example,
+				to move it left or right into a margin using either left or right properties.
+			</span>
+		</p>
+
+		<h2><a id="C6"> 6. Stacking Order & Fixed position  </a></h2>
+		<p>
+			<a style="font-weight:bold"> 1) Stacking Order </a><br>
+			Absolutely positioned
+			elements overlap other elements, so it follows that multiple positioned elements
+			have the potential to stack up on one another. By default, elements stack up in the order in which they appear in the
+			document, but you can change the stacking order with the z-index property.
+		</p>
+		<p>
+			z-index Property:<br>
+			<span class="ex">
+				Values: number|auto|inherit<br>
+				Default: auto<br>
+				Applies to: positioned elements(relative,absolute,or fixed)<br>
+				Inherits: no<br>
+				* The value of the z-index property is a number (positive or negative).
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 2) Fixed position </a><br>
+			For the most part, fixed positioning works just like absolute positioning. The
+			significant difference is that the offset values for fixed elements are always
+			relative to the viewport, which means the positioned element stays put even
+			when the rest of the page scrolls.
+		</p>
+		<p>
+			<span class="ex">
+				example: <br>
+				#award {<br>
+				position: fixed;<br>
+				top: 35px;<br>
+				left: 25px;<br>
+				}<br>
+			</span>
+		</p>
+	</section>
+	<footer>  </footer>
+	</div>
+
+</body>
+</html>

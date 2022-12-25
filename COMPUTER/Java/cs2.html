@@ -1,0 +1,335 @@
+﻿<html>
+<head>
+	<title>JavaScript</title>
+        <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+	<h1 style="text-align:center;"> Scripting Documents </h1>
+
+	<nav id="Index">
+		<ul>
+			<li>
+				<a href="#C1"> 1. Overview of the DOM </a>
+			</li>
+			<li>
+				<a href="#C2"> 2. Selecting Document Elements </a>
+			</li>
+			<li>
+				<a href="#C3"> 3. Document Structure & Traversal </a>
+			</li>
+			<li>
+				<a href="#C4"> 4. Attributes </a>
+			</li>
+			<li>
+				<a href="#C5"> 5. Element Content </a>
+			</li>
+			<li>
+				<a href="#C6"> 6. Creating, Inserting, & Deleting Nodes  </a>
+			</li>
+			<li>
+				<a href="#C7"> 7. Document, Element Geometry & Scrolling  </a>
+			</li>
+			<li>
+				<a href="#C8"> 8. HTML Forms  </a>
+			</li>
+		</ul>
+	</nav>
+	<section>
+		<h1> Learning Order </h1>
+		<p class="ex">
+			How to query or select individual elements from a document.<br>
+			How to traverse a document as a tree of nodes, and how to find the ancestors,
+			siblings, and descendants of any document element.<br>
+			How to query and set the attributes of document elements.<br>
+			How to query, set, and modify the content of a document.<br>
+			How to modify the structure of a document by creating, inserting, and deleting
+			nodes.<br>
+			How to work with HTML forms.<br>
+		</p>
+		<h2><a id="C1"> 1. Overview of the DOM </a></h2>
+		<p class="para">
+			The Document Object Model, or DOM, is the fundamental API for representing and
+			manipulating the content of HTML and XML documents. First, you should understand that the nested elements of an HTML or XML document
+			are represented in the DOM as a tree of objects. The tree representation of an HTML
+			document contains nodes representing HTML tags or elements, such as &lt;body&gt; and &lt;p&gt;, and nodes representing strings of text.
+		</p>
+		<p class="ex">
+			The node of a document(or one level above) is the parent. The nodes one level directly below another
+			node are the children of that node. Nodes at the same level, and with the same parent,
+			are siblings. The set of nodes any number of levels below another node are the descendants
+			of that node. And the parent, grandparent, and all other nodes above a node are
+			the ancestors of that node.
+		</p>
+		<p class="para">
+			Note that the figure contains three different types of nodes.
+		</p>
+
+		<p class="para">
+			<a style="font-weight:bold"> 1) Document node: </a>
+			At the root of the tree is the Document
+			node that represents the entire document.
+		</p>
+		<p class="para">
+			<a style="font-weight:bold"> 2) HTML elements: </a>
+			The nodes that represent HTML elements
+			are Element nodes.
+		</p>
+		<p class="para">
+			<a style="font-weight:bold"> 3) Text nodes: </a>
+			Text are subclasses of Node and have their own entries in the reference
+			section.
+		</p>
+
+		<h2><a id="C2">  2. Selecting Document Elements </a></h2>
+		<p>
+			Most client-side JavaScript programs work by somehow manipulating one or more
+			document elements. <br>
+			The DOM defines a number of ways to select elements; you
+			can query a document for an element or elements:
+		</p>
+		<p class="ex">
+			with a specified id attribute; <br>
+			with a specified name attribute; <br>
+			with the specified tag name; <br>
+			with the specified CSS class or classes; or
+			matching the specified CSS selector <br>
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 1) Selecting Elements By ID </a><br>
+			<span class="para">
+				Any HTML element can have an id attribute. The value of this attribute must be unique within the document.<br>
+				* No two elements in the same document can have the same ID.
+			</span>
+		</p>
+		<p class="para">
+			You can select an element based on this unique ID with the getElementById() method of the Document object.<br>
+			<span class="ex">
+				example:<br>
+				var section1 = document.getElementById("section1");
+			</span>
+		</p>
+		<p class="para">
+			If you need to look up more than one element by ID, you might find the getElements() function of example below.
+		</p>
+		<p class="ex">
+			/** <br>
+			* This function expects any number of string arguments. <br>
+			* It treats each argument as an element id and calls document.getElementById() for each. <br>
+			* Returns an object that maps ids to the corresponding Element object.<br>
+			* Throws an Error object if any of the ids is undefined.<br>
+			*/ <br>
+			function getElements(/*ids...*/) { <br>
+			var elements = {}; // Start with an empty map <br>
+			for(var i = 0; i < arguments.length; i++) { // For each argument<br>
+			var id = arguments[i]; // Argument is an element id<br>
+			var elt = document.getElementById(id); // Look up the Element <br>
+			if (elt == null) // If not defined, <br>
+			throw new Error("No element with id: " + id); // throw an error <br>
+			elements[id] = elt; // Map id to element <br>
+			} <br>
+			return elements; // Return id to element map<br>
+			}<br>
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 2) Selecting Elements by Name </a><br>
+			<span class="para">
+				The HTML name attribute was originally intended to assign names to form elements,
+				and the value of this attribute is used when form data is submitted to a server. Like the
+				id attribute, name assigns a name to an element. <br>
+				Unlike id, however, the value of a
+				name attribute does not have to be unique: multiple elements may have the same name,
+				and this is common in the case of radio buttons and checkboxes in forms.
+			</span>
+		</p>
+
+		<p class="para">
+			To select HTML elements based on the value of their name attributes, you can use the
+			getElementsByName() method of the Document object: <br>
+			<span class="ex">
+				var radiobuttons = document.getElementsByName("favorite_color");
+			</span>
+		</p>
+		</p>
+		<p class="para">
+			getElementsByName() is defined by the HTMLDocument class, not the Document class,
+			and so it is only available for HTML documents, not XML documents.
+		</p>
+		<p class="para">
+			If there is only a single element with a given name, the value of the automatically created
+			document property is the element itself. <br>
+			If there is more than one element, then the
+			value of the property is a NodeList object that acts as an array of elements.<br>
+			The document properties created for named &lt;iframe&gt; elements are special: instead of referring to the Element object, they refer to the frame’s Window object.
+		</p>
+		<p class="para">
+			What this means is that some elements can be selected by name simply by using the
+			name as a Document property:<br>
+			<span class="ex">
+				example:<br>
+				// Get the Element object for the &lt;form name="shipping_address"&gt; element <br>
+				var form = document.shipping_address;
+			</span>
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 3) Selecting Elements by Type </a><br>
+			<span class="para">
+				You can select all HTML or XML elements of a specified type (or tag name) using the
+				getElementsByTagName() method of the Document object.
+			</span>
+		</p>
+
+		<p class="para">
+			To obtain a read-only arraylike
+			object containing the Element objects for all &lt;span&gt; elements in a document:<br>
+			<span class="ex">
+				var spans = document.getElementsByTagName("span");<br>
+			</span>
+		</p>
+		<p class="para">
+			Like getElementsByName(), getElementsByTagName() returns a NodeList object.
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 4) Selecting Elements by CSS Class </a><br>
+			<span class="para">
+				The class attribute of an HTML is a space-separated list of zero or more identifiers.
+			</span>
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 5) Selecting Elements with CSS Selectors </a><br>
+			<span class="para">
+				CSS stylesheets have a very powerful syntax, known as selectors, for describing elements
+				or sets of elements within a document.
+			</span>
+		</p>
+
+		<h2><a id="C3"> 3. Document Structure and Traversal </a></h2>
+		<p>
+			Once you have selected an Element from a Document, you sometimes need to find
+			structurally related portions (parent, siblings, children) of the document.
+		</p>
+
+
+		<p>
+			<a style="font-weight:bold"> 1) Documents As Trees of Nodes </a><br>
+			T<br>
+		</p>
+
+		<p>
+			<span style="font-weight:bold"> 2) Documents As Trees of Elements </span> <br>
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 3) Example: Portable document traversal functions </a><br>
+			T<br>
+		</p>
+
+
+
+
+
+
+
+		<h2><a id="C4"> 4. Attributes  </a></h2>
+		<p>
+			HTML elements consist of a tag name and a set of name/value pairs known as attributes.
+		</p>
+		<p>
+			<a style="font-weight:bold"> 1) Documents As Trees of Nodes </a><br>
+			T<br>
+		</p>
+
+		<p>
+			<span style="font-weight:bold"> 2) Documents As Trees of Elements </span> <br>
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 3) Example: Portable document traversal functions </a><br>
+			T<br>
+		</p>
+
+
+		<h2><a id="C5"> 5. Element Content  </a></h2>
+		<p>
+			What the “content” of the &lt;p&gt; element is.
+		</p>
+
+
+		<h2><a id="C6"> 6. Creating, Inserting, & Deleting Nodes  </a></h2>
+		<p>
+			...
+		</p>
+
+		<h2><a id="C7"> 7. Document, Element Geometry & Scrolling  </a></h2>
+		<p>
+			...
+		</p>
+		<h2><a id="C8"> 8. HTML Forms  </a></h2>
+		<p>
+			The HTML &lt;form&gt; element, and the various form input elements, such as &lt;input&gt;, &lt;select&gt;, and &lt;button&gt;, have an important place in client-side programming. These
+			HTML elements date from the very beginning of the Web and predate JavaScript itself.
+		</p>
+		<p>
+			<a style="font-weight:bold"> 1) Selecting Forms and Form Elements </a><br>
+			Forms and the elements they contain can be selected from a document using standard
+			methods like getElementById() and getElementsByTagName():
+			<a class="ex">
+				var fields = document.getElementById("address").getElementsByTagName("input");
+			</a>
+		</p>
+		<p class="para">
+			In browsers that support querySelectorAll(), you might select all radio buttons, or all
+			elements with the same name.<br>
+			<span class="ex">
+				example:<br>
+				// All radio buttons in the form with id "shipping"<br>
+				document.querySelectorAll('#shipping input[type="radio"]');<br>
+				// All radio buttons with name "method" in form with id "shipping"<br>
+				document.querySelectorAll('#shipping input[type="radio"][name="method"]');<br>
+			</span>
+		</p>
+
+		<p class="para">
+			A &lt;form&gt; element with a name or
+			id attribute can be selected in a number of other ways.
+			<span class="ex">
+				For example, a &lt;form&gt; with a name="address" attribute:<br>
+				window.address // Brittle: do not use<br>
+				document.address // Only works for forms with name attribute<br>
+				document.forms.address // Explicit access to a form with name or id<br>
+				document.forms[n] // Brittle: n is the form's numerical position<br>
+			</span>
+		</p>
+
+
+
+		<p>
+			<span style="font-weight:bold"> 2) Form and Element Properties </span> <br>
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 3) Form and Element Event Handlers </a><br>
+			T<br>
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 4) Push Buttons </a><br>
+			T<br>
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 5) Toggle Buttons </a><br>
+			T<br>
+		</p>
+
+	</section>
+	<footer>  </footer>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+﻿<html>
+<head>
+	<title>JavaScript</title>
+        <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+	<h1 style="text-align:center;"> The Box </h1>
+
+	<nav>
+		<ul>
+			<li>
+				<a href="#C1"> 1. About HTML 5 </a>
+			</li>
+			<li>
+				<a href="#C2"> 2. How Style Sheets Work </a>
+			</li>
+			<li>
+				<a href="#C3"> 3. Inheritance </a>
+			</li>
+			<li>
+				<a href="#C4"> 4. Conflicting styles </a>
+			</li>
+			<li>
+				<a href="#C4"> 5. The box model & Grouped selectors </a>
+			</li>
+		</ul>
+	</nav>
+	<section>
+		<h1> Learning Order </h1>
+		<h2><a id="C1"> 1.  About HTML 5  </a></h2>
+		<p>
+			With HTML5 for common
+			tasks, developers can rely on built-in browser capabilities and not need to
+			reinvent the wheel for every application.
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 1) XHTML History</a><br>
+			<span class="ex">
+				The first version, XHTML 1.0, is nearly identical to HTML 4.01, sharing the same elements and attributes, but with stricter requirements for how markup must be done. <br>
+				HTML 4.01, along with XHTML 1.0, its stricter XML-based sibling, became the cornerstone of the web standards movement...<br>
+				In 2004, members of Apple, Mozilla, and Opera formed the Web Hypertext Application Technology Working Group separate
+				from the W3C. The goal of the WHATWG was to further the development
+				of HTML to meet new demands in a way that was consistent with
+				real-world authoring practices and browser behavior.<br> The W3C eventually established its own HTML5 Working Group
+				based on the work done by the WHATWG. <br>
+				As of this
+				writing, work on the HTML5 specification is happening in both organizations in tandem, sometimes with conflicting results.<br>
+				Their initial documents, Web Applications 1.0 and Web Forms 1.0, were rolled together into HTML5, which is still in development under the guidance of an editor, Ian Hickson (currently of Google).
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 2) New features that HTML5 offers </a><br>
+			<span class="ex">
+				A new DOCTYPE<br>
+				New elements and attributes<br>
+				Obsolete 4.01 elements<br>
+				APIs<br>
+			</span>
+			A minimal DOCTYPE(HTML5): &lt;! DOCTYPE html &gt;
+		</p>
+
+
+		<h2><a id="C2"> 2. How Style Sheets Work </a></h2>
+		<p>
+			A style sheet is made up of one or more style instructions that describe how an element or group of elements should be displayed.<br>
+			<span class="ex">
+				h1 { color: green; } // selects h1; identifies the element or elements to be affected. <br>
+				p { font-size: small; ... } // declares font-size; provides the rendering instructions.<br>
+				* the declaration is made up of a property and its value.
+			</span>
+		</p>
+		<p>
+			Attaching the styles to the document; External & Embedded style sheets. <br>
+			<span class="ex">
+				External style sheets: &lt;script src="file.css" &gt; &lt;/script&gt; <br>
+				Embedded style sheets: &lt;script &gt; /* style rules go here */&lt;/script&gt; <br>
+				* Inline styles: &lt;element style="the rules go here" &gt; ~ &lt;/element&gt; <br>
+			</span>
+		</p>
+
+		<h2><a id="C3"> 3. Inheritance  </a></h2>
+		<p>
+			Styled HTML elements pass down certain style properties to the elements they contain.<br>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 1) Document structure </a><br>
+			<span class="ex">
+				HTML documents have an implicit structure or hierarchy.<br>
+				example: HTML - head(left) & body(right)<br>
+				Html root element that contains a head and a body, and the body contains heading and paragraph elements.<br>
+				* The other elements have the structure as an upside-down tree, branching out from the root.<br>
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 2) Parents and children </a><br>
+			<span class="ex">
+				The document tree becomes a family tree when it comes to referring to the relationship between elements.<br>
+				All the elements contained within a given element are said to be its descendants.<br>
+				example: the h1, h2, p, em, and img element are all descendants of the body element.<br>
+				Conversely, the containing element is the parent.<br>
+				All of the elements higher than a particular element in the hierarchy are its ancestors. Two elements with the same parent are siblings. <br>
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 3) Pass it on </a><br>
+			<span class="ex">
+				When you write a font-related style rule using the p element as a selector, <br>
+				the rule applies to all of the paragraphs in the document as well as the inline text elements they contain.<br>
+				* In general, properties related to the styling of text font size, color, style, etc., are passed down. <br>
+				Properties such as borders, margins, backgrounds, and so on, that affect the boxed area around the element tend not to be passed down.
+			</span>
+		</p>
+
+
+
+		<h2><a id="C4"> 4. Conflicting styles </a></h2>
+		<p>
+			CSS allows you to apply several style sheets to the same document, which means there are bound to be conflicts.<br>
+			The cascade refers to what happens when several sources of style information vie for control of the elements on a page:<br>
+			style information is passed down (“cascades” down) until it is overridden by a style command with more weight.<br>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 1) Weight & importance </a><br>
+			<span class="ex">
+				Generally speaking, the closer the style sheet is to the content, the more weight it is given. <br>
+				Embedded style sheets that appear right in the document in the style element have more weight than external style sheets.<br>
+				To prevent a specific rule from being overridden, you can assign it“importance” with the !important indicator<br>
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 2) Specificity </a><br>
+			<span class="ex">
+				Once the applicable style sheet has been chosen, there may still be conflicts;<br>
+				When two rules in a single style sheet conflict, the type of selector is used to determine the winner. <br>
+				The more specific the selector, the more weight it is given to override conflicting declarations.<br>
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 3) Rule order </a><br>
+			<span class="ex">
+				if there are conflicts within style rules of identical weight, whichever one comes last in the list “wins.”
+			</span>
+		</p>
+		<h2><a id="C5"> 5. The box model & Grouped selectors  </a></h2>
+		<p>
+			<a style="font-weight:bold"> 1) The box model </a><br>
+			The easiest way to think of the box model is that browsers see every element on the page (both block and inline) as being contained in a little rectangular box.
+			You can apply properties such as borders, margins, padding, and backgrounds to these boxes, and even reposition them on the page.
+		</p>
+		<p>
+			<a style="font-weight:bold"> 2) Grouped selectors </a><br>
+			A handy style rule being shortcut: If you ever need to apply the same style property to a number of elements, <br>
+			you can group the selectors into one rule by separating them with commas. <br>
+			<span class="ex">
+				example: h1, h2, p, em, img { border: 1px solid blue; }<br>
+			</span>
+		</p>
+
+	</section>
+	<footer>  </footer>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,327 @@
+<html>
+<head>
+	<title>JavaScript</title>
+        <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+	<h1 style="text-align:center;"> Objects and Arrays </h1>
+
+	<nav id="Index">
+		<ul>
+			<li>
+				<a href="#C1"> 1. Creating Objects </a>
+			</li>
+			<li>
+				<a href="#C2"> 2. Querying and Setting Properties </a>
+			</li>
+			<li>
+				<a href="#C3"> 3. Deleting Properties </a>
+			</li>
+			<li>
+				<a href="#C4"> 4. Testing Properties  </a>
+			</li>
+			<li>
+				<a href="#C5"> 5. Enumerating Properties </a>
+			</li>
+			<li>
+				<a href="#C6"> 6. Property Getters and Setters </a>
+			</li>
+			<li>
+				<a href="#C7"> 7. Property Attributes </a>
+			</li>
+			<li>
+				<a href="#C8"> 8. Object Attributes </a>
+			</li>
+			<li>
+				<a href="#C9"> 9. Serializing Objects </a>
+			</li>
+			<li>
+				<a href="#C10"> 10. Object Methods </a>
+			</li>
+			<li>
+				<a href="#C11"> 11. Creating Arrays </a>
+			</li>
+			<li>
+				<a href="#C12"> 12.  Reading and Writing Array Elements </a>
+			</li>
+			<li>
+				<a href="#C13"> 13. Properties of Array </a>
+			</li>
+			<li>
+				<a href="#C14"> 14. Array Methods  </a>
+			</li>
+			<li>
+				<a href="#C15"> 15. ECMAScript 5 Array Methods </a>
+			</li>
+			<li>
+				<a href="#C16"> 16. Array Type </a>
+			</li>
+			<li>
+				<a href="#C17"> 17. Array-Like Objects </a>
+			</li>
+			<li>
+				<a href="#C18"> 18. Strings As Arrays </a>
+			</li>
+
+		</ul>
+	</nav>
+	<section>
+		<h1> Learning Order </h1>
+		<p class="para">
+			An object is a composite value: it aggregates
+			multiple values (primitive values or other objects) and allows you to store and
+			retrieve those values by name. <br>
+			An object is an unordered collection of properties, each
+			of which has a name and a value. Property names are strings, so we can say that objects
+			map strings to values.
+		</p>
+
+		<h2><a id="C1"> 1. Creating Objects </a></h2>
+		<p>
+			<a style="font-weight:bold"> 1) Object Literals </a><br>
+			An object literal is a comma-separated list of colon-separated name:value pairs, enclosed
+			within curly braces.<br>
+			A property name is a JavaScript identifier or a string literal
+			(the empty string is allowed).
+		</p>
+		<p class="ex">
+			example:<br>
+			var empty = {};    // An object with no properties<br>
+			var point = { x:0, y:0 };    // Two properties<br>
+			var point2 = { x:point.x, y:point.y+1 };     // More complex values<br>
+			var book = {<br>
+			"main title": "JavaScript",    // Property names include spaces,<br>
+			'sub-title': "The Definitive Guide",    // and hyphens, so use string literals<br>
+			"for": "all audiences",    // for is a reserved word, so quote<br>
+			author: {    // The value of this property is<br>
+			firstname: "David",    // itself an object. Note that<br>
+			surname: "Flanagan"    // these property names are unquoted.<br>
+			}<br>
+			};<br>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 2) Creating Objects with new </a><br>
+			The new operator creates and initializes a new object.<br>
+			The new keyword must be followed
+			by a function invocation. A function used in this way is called a constructor and serves
+			to initialize a newly created object.
+		</p>
+		<p class="ex">
+			example:<br>
+			var o = new Object(); // Create an empty object: same as {}.<br>
+			var a = new Array(); // Create an empty array: same as [].<br>
+			var d = new Date(); // Create a Date object representing the current time<br>
+			var r = new RegExp("js"); // Create a RegExp object for pattern matching.<br>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 3) Prototypes </a><br>
+			All objects created by object literals have the same prototype object, and we can refer
+			to this prototype object in JavaScript code as Object.prototype. The object created by new Object()
+			inherits from Object.prototype just as the object created by {} does. <br>
+			Similarly, the
+			object created by new Array() uses Array.prototype as its prototype, and the object
+			created by new Date() uses Date.prototype as its prototype.
+		</p>
+		<p>
+			<a style="font-weight:bold"> 4) Object.create() </a><br>
+			ECMAScript 5 defines a method, Object.create(), that creates a new object, using its
+			first argument as the prototype of that object.<br>
+			Object.create() is a static function, not a method invoked on individual objects.<br>
+			* You can pass null to create a new object that does not have a prototype.<br>
+		</p>
+		<p class="ex">
+			example:<br>
+			var o1 = Object.create({x:1, y:2}); // o1 inherits properties x and y.<br>
+			var o2 = Object.create(null); // o2 inherits no props or methods.<br>
+		</p>
+		<p>
+			If you want to create an ordinary empty object (like the object returned by {} or new
+			Object()), pass Object.prototype.
+		</p>
+		<p class="ex">
+			example:<br>
+			var o3 = Object.create(Object.prototype); // o3 is like {} or new Object().
+		</p>
+
+		<h2><a id="C2"> 2. Text </a></h2>
+		<p>
+			A
+		</p>
+		<p>
+			<a style="font-weight:bold"> 1) String Literals </a><br>
+			<span class="para">
+				To include a string literally in a JavaScript program, simply enclose the characters of the string within a matched pair of single or double quotes (' or ").<br>
+				In ECMAScript 5 you can break a string literal across multiple lines by ending each line but the last with a backslash (\).
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 2) Escape Sequences in String Literals </a><br>
+			<span class="para">
+				Combined with the character that follows \n, it represents a character that is not otherwise representable within the string.<br>
+				JavaScript escape sequences
+				<table>
+					<tr class="tr1">
+						<td> Sequence </td>
+						<td> Character represented </td>
+						<td> Sequence </td>
+						<td> Character represented </td>
+					</tr>
+					<tr class="tr2"><td>\O</td><td>10 to the power 2</td><td>\O</td><td>r</td></tr>
+					<tr class="tr2"><td>\O</td><td>round to the nearest integer</td><td>\O</td><td>r</td></tr>
+					<tr class="tr2"><td>\O</td><td>round up to an integer</td><td>\O</td><td>r</td></tr>
+				</table>
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 3) Working with Strings </a><br>
+			<span class="para">
+				One of the built-in features of JavaScript is the ability to concatenate strings. If you use the + operator with numbers, it adds them. <br>
+				To determine the length of a string(the number of 16-bit values it contains) use the length property of the string.<br>
+				For example:<br>
+			</span>
+			<span class="ex">
+				var char="Me and you"<br>
+				char.length  // return var length.<br>
+			</span>
+			<span class="para"> <br> Other useful properties </span>
+			<table>
+				<tr class="tr1">
+					<td> Example </td>
+					<td> description </td>
+					<td> Example </td>
+					<td> description </td>
+				</tr>
+				<tr class="tr2"><td>char.charAt(0)</td><td>10 to the power 2</td><td>char.charAt(0)</td><td>r</td></tr>
+				<tr class="tr2"><td>char.charAt(0)</td><td>round to the nearest integer</td><td>char.charAt(0)</td><td>r</td></tr>
+				<tr class="tr2"><td>char.charAt(0)</td><td>round up to an integer</td><td>char.charAt(0)</td><td>r</td></tr>
+			</table>
+			</span>
+			<span class="additional">
+				* In ECMAScript 5, strings can be treated like read-only arrays, and you can access individual characters (16-bit values) from a string using square brackets
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 4) Pattern Matching </a><br>
+			<span class="para">
+				JavaScript defines a RegExp() constructor for creating objects that represent textual patterns.<br>
+				These patterns are described with regular expressions, and JavaScript adopts Perl's syntax for regular expressions.<br>
+				Both strings and RegExp objects have methods for performing pattern matching and search-and-replace operations using regular expressions.
+			</span>
+		</p>
+
+		<h2><a id="C3"> 3. Boolean Values </a></h2>
+		<p>
+			A boolean value represents truth or falsehood, on or off, yes or no. There are only two possible values of this type.
+		</p>
+
+
+
+		<h2><a id="C4"> 4. null and undefined </a></h2>
+		<p>
+			null is a language keyword that evaluates to a special value that is usually used to indicate the absence of a value.
+		</p>
+
+		<h2><a id="C5"> 5. The Global Object </a></h2>
+		<p>
+			The global object is a regular JavaScript object that serves a very important purpose.<br>
+			The properties of this object are the globally defined symbols that are available to a JavaScript program.
+		</p>
+
+
+		<h2><a id="C6"> 6. Wrapper Objects </a></h2>
+		<p>
+			JavaScript objects are composite values: they are a collection of properties or named values. <br>
+			We refer to the value of a property using the . notation. <br>
+			<span class="para">
+				method: the value of a property is a function. To invoke the method m of an object o, we write o.m().
+			</span>
+		</p>
+
+		<h2><a id="C7"> 7. Immutable Primitive Values & Mutable Object References </a></h2>
+		<p>
+			Primitive values: undefined, null, booleans, numbers, and strings <br>
+			Objects: arrays and functions ...<br>
+			Difference:<br>
+			<span class="ex">
+				Primitives are immutable: there is no way to change (or "mutate") a primitive value. <br>
+				Primitives are also compared by value: two values are the same only if they have the same value.<br>
+			</span>
+		</p>
+		<h2><a id="C8"> 8. Type Conversions </a></h2>
+		<p>
+			JavaScript is very flexible about the types of values it requires.
+		</p>
+		<h2><a id="C9"> 9. Variable Declaration </a></h2>
+		<p>
+			JavaScript is very flexible about the types of values it requires.
+		</p>
+		<h2><a id="C10"> 10. Variable Scope</a></h2>
+		<p>
+			The scope of a variable is the region of your program source code in which it is defined.
+		</p>
+
+		<h2><a id="C11"> 11. Creating Arrays</a></h2>
+		<p>
+			The easiest way to create an array is with an array literal, which is simply a commaseparated
+			list of array elements within square brackets.
+		</p>
+		<p class="ex">
+			example:<br>
+			var empty = []; // An array with no elements<br>
+			var primes = [2, 3, 5, 7, 11]; // An array with 5 numeric elements<br>
+			var misc = [ 1.1, true, "a", ]; // 3 elements of various types + trailing comma<br>
+			var base = 1024;<br>
+			var table = [base, base+1, base+2, base+3];<br>
+			var b = [[1,{x:1, y:2}], [2, {x:3, y:4}]];<br>
+			var count = [1,,3]; // An array with 3 elements, the middle one undefined.<br>
+			var undefs = [,,]; // An array with 2 elements, both undefined.<br>
+
+		</p>
+		<p>
+			Another way to create an array is with the Array() constructor.
+			You can invoke this constructor in three distinct ways:<br>
+			Call it with no arguments.<br>
+			Call it with a single numeric argument, which specifies a length.<br>
+			Explicitly specify two or more array elements or a single non-numeric element for
+			the array:<br>
+		</p>
+		<p class="ex">
+			example:<br>
+			var a = new Array();<br>
+			var a = new Array(10);<br>
+			var a = new Array(5, 4, 3, 2, 1, "testing, testing");<br>
+		</p>
+
+		<h2><a id="C12"> 12. Reading and Writing Array Elements </a></h2>
+		<p>
+			You access an element of an array using the [] operator.
+		</p>
+		<p class="ex">
+			example:<br>
+			var a = ["world"]; // Start with a one-element array<br>
+			var value = a[0]; // Read element 0<br>
+			a[1] = 3.14; // Write element 1<br>
+			i = 2;<br>
+			a[i] = 3; // Write element 2<br>
+			a[i + 1] = "hello"; // Write element 3<br>
+			a[a[i]] = a[0]; // Read elements 0 and 2, write element 3<br>
+		</p>
+		<p>
+			What is special about arrays is that when you use property names that are non-negative
+			integers less than 2<sup>32</sup>, the array automatically maintains the value of the length property
+			for you.<br>
+			The length property of the array changed as we did so: a.length // => 4<br>
+			Note that you can index an array using numbers that are negative or that are not integers.
+			When you do this, the number is converted to a string, and that string is used as
+			the property name.
+		</p>
+
+
+
+	</section>
+	<footer> </footer>
+	</div>
+
+</body>
+</html>

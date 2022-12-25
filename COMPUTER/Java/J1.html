@@ -1,0 +1,143 @@
+<html>
+<head>
+	<title>JavaScript</title>
+        <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+	<h1 style="text-align:center;"> Lexical Structure </h1>
+
+	<nav>
+		<ul>
+			<li>
+				<a href="#C1"> 1. Character Set </a>
+			</li>
+			<li>
+				<a href="#C2"> 2. Literals </a>
+			</li>
+			<li>
+				<a href="#C3"> 3. Identifiers </a>
+			</li>
+			<li>
+				<a href="#C4"> 4. Optional Semicolons </a>
+			</li>
+		</ul>
+	</nav>
+	<section>
+		<h1> Learning Order </h1>
+		<h2><a id="C1"> 1. Character Set </a></h2>
+		<p> JavaScript programs are written using the Unicode character set. Unicode is a superset of ASCII and Latin-1 and supports virtually every written language currently used on the planet.</p>
+		<p>
+			<a style="font-weight:bold">1) Case Sensitivity language </a><br>
+			<span class="para_list">
+				Language keywords, variables, function names, and other identifiers in Javascripts must always be typed with a consistent capitalization of letters.<br>
+			</span>
+			<span class="additional">
+				* Note that HTML is not case-sensitive (although XHTML is).
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold">2) Control Characters(Whitespace, Line Breaks...) </a><br>
+			<span class="para_list">
+				JavaScript ignores line breaks because you can use spaces and newlines freely in your programs, you can format and indent your programs in a neat and consistent way that makes the code easy to read and understand.<br>
+			</span>
+			<span class="additional">
+				* Whitespace in JS
+			</span>
+			<table>
+				<tr class="tr1">
+					<td> Character </td>
+					<td> Unicode </td>
+					<td> HTML(code) </td>
+					<td> HTML(symbol) </td>
+				</tr>
+				<tr class="tr2"><td>regular space</td><td>\u0020</td><td>&#38;#32</td><td>&#32;</td></tr>
+				<tr class="tr2"><td>tab</td><td>\u0009</td><td>&#38;#9</td><td> &#9; </td></tr>
+				<tr class="tr2"><td>vertical tab</td><td>\u000B</td><td>&#38;#11</td><td>&#11;</td></tr>
+				<tr class="tr2"><td>form feed</td><td>\u000C</td><td>&#38;#12</td><td>&#12;</td></tr>
+				<tr class="tr2"><td>nonbreaking space</td><td>\u00A0</td><td>&#38;#160</td><td>&#160;</td></tr>
+				<tr class="tr2"><td>byte order mark</td><td>\uFEFF</td><td>&#38;#65279</td><td>&#65279;</td></tr>
+			</table>
+			<br>
+			<span class="additional">
+				* Line terminators in JS
+			</span>
+			<br>
+			<span class="additional">
+				* Control characters &#38; a special case in JS
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold">3) Escape Sequences </a><br>
+			<span class="para_list">
+				Some computer hardware and software can not display or input the full set of Unicode characters. <br> To support programmers using this older technology, JavaScript defines special sequences of six ASCII characters to represent any 16-bit Unicode codepoint.<br>
+			</span>
+			<span class="additional">
+				* Unicode
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold">4) Normalization </a><br>
+			<span class="para_list">
+				Unicode allows more than one way of encoding the same character.<br>
+			The Unicode standard defines the preferred encoding for all characters and specifies a normalization procedure to convert text to a canonical form suitable for comparisons.
+				JavaScript assumes that the source code it is interpreting has already been normalized and makes no attempt to normalize identifiers, strings, or regular expressions itself.
+			</span>
+		</p>
+		<h2><a id="C2"> 2. Literals </a></h2>
+		<p>
+			A literal is a data value that appears directly in a program.<br>
+			<a class="para_list"><br>
+				1) numbers <br>
+				2) string <br>
+				3) A boolean value <br>
+				4) A regular expression literal for pattern matching <br>
+				5) Objects <br>
+				6) Coment <br>
+			</a>
+
+		</p>
+		<h2><a id="C3"> 3. Identifiers </a></h2>
+		<p>
+			Identifiers are used to name variables and functions and to provide labels for certain loops in JavaScript code.<br> For portability and ease of editing, it is common to use only ASCII letters and digits in
+			identifiers. <br>
+			JavaScript reserves certain identifiers for use by the language itself which is called reserved words.<br>
+			<a class="para_list">
+				<br>
+				For example, The words, such as 'break','do',etc, cannot be used as identifiers.<br>
+			</a>
+		</p>
+
+		<h2><a id="C4"> 4. Optional Semicolons </a></h2>
+		<p>
+			Client-side JavaScript does not exhibit the nonlinear cross-reference problem nearly to
+			the extent that the core language does, and it is possible to learn how to use JavaScript
+			in web browsers in a fairly linear sequence.<br>
+		</p>
+		<h2> * Basic Concepts </h2>
+		<p> The lexical structure of a programming language is the set of elementary rules that specifies how you write programs in that language.</p>
+		<p>
+			<a style="font-weight:bold"> 1) Syntax of an language </a><br>
+			<span class="para">
+				It is the rules that defines the combinations of symbols that are considered to be correctly structured statements or expressions in that language.
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 2) Unicode character set </a><br>
+			<span class="para">
+				Unicode, formally The Unicode Standard, is an information technology standard for the consistent encoding, representation, and handling of text expressed in most of the world's writing systems.<br>
+				<a class="additional"> * The standard defines as of the current version (15.0) 149,186 characters covering 161 modern and historic scripts, as well as symbols, etc.</a>
+			</span>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 3) Identifiers </a><br>
+			<span class="para">
+				An identifier is a name that identifies (that is, labels the identity of) either a unique object or a unique class of objects, where the "object" or class may be an idea, physical countable object (or class thereof), or physical noncountable substance (or class thereof).
+			</span>
+		</p>
+	</section>
+	<footer> </footer>
+	</div>
+
+</body>
+</html>

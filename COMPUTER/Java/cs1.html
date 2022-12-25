@@ -1,0 +1,318 @@
+﻿<html>
+<head>
+	<title>JavaScript</title>
+        <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+	<h1 style="text-align:center;"> The Window Object </h1>
+
+	<nav id="Index">
+		<ul>
+			<li>
+				<a href="#C1"> 1. Simple client-side JavaScript for revealing content </a>
+			</li>
+			<li>
+				<a href="#C2"> 2. Browser Location & Navigation </a>
+			</li>
+			<li>
+				<a href="#C3"> 3. Browser & Screen Information  </a>
+			</li>
+			<li>
+				<a href="#C4"> 4. Document Elements As Window Properties </a>
+			</li>
+			<li>
+				<a href="#C5"> 5. Multiple Windows and Frames </a>
+			</li>
+		</ul>
+	</nav>
+	<section>
+		<h1> Learning Order </h1>
+		<h2><a id="C1"> 1. Simple client-side JavaScript for revealing content </a></h2>
+		<p>
+			Note that the code includes a function defined within another function.
+		</p>
+
+		<p>
+			<span class="ex">
+				&lt;style&gt;<br>
+				.reveal * { display: none; }    /* Children of class="reveal" are not shown */<br>
+				.reveal *.handle { display: block;}    /* Except for the class="handle" child */<br>
+				&lt;/style&gt;<br>
+				&lt;script&gt;<br>
+				// Don't do anything until the entire document has loaded<br>
+				window.onload = function() {    // Find all container elements with class "reveal"<br>
+				var elements = document.getElementsByClassName("reveal");<br>
+				for(var i = 0; i < elements.length; i++) {     // For each one...<br>
+				var elt = elements[i];    // Find the "handle" element with the container<br>
+				var title = elt.getElementsByClassName("handle")[0];    // When that element is clicked, reveal the rest of the content<br>
+				title.onclick = function() {<br>
+				if (elt.className == "reveal") elt.className = "revealed";<br>
+				else if (elt.className == "revealed") elt.className = "reveal";<br>
+				}<br>
+				}<br>
+				};<br>
+				&lt;/script&gt;<br>
+				&lt;div class="reveal"&gt;<br>
+				&lt;h1 class="handle"&gt; Click Here to Reveal Hidden Text &lt;/h1&gt;<br>
+				&lt;p&gt; This paragraph is hidden... &lt;/p&gt;<br>
+				&lt;/div&gt;<br>
+			</span>
+		</p>
+		<p>
+			* Window object have a variety of the properties and methods.
+		</p>
+		<h2><a id="C2">  2. Browser Location & Navigation  </a></h2>
+		<p>
+			The location property of the Document object also refers to the Location object <br>
+			<a class="ex">
+				window.location === document.location // always true<br>
+			</a>
+			The Document object also has a URL property, which is a static string that holds the
+			URL of the document when it was first loaded.
+		</p>
+		<p>
+			<a style="font-weight:bold"> 1) Parsing URLs </a><br>
+			<span class="ex">
+				The location property of a window is a reference to a Location object; it represents the current URL of the document being displayed in that window.<br>
+				The href property of the Location object is a string that contains the complete text of the URL.<br>
+				The toString() method of the Location object returns the value of the href property, <br>
+				so in contexts that will implicitly invoke toString(), you can just write location rather than location.href.<br>
+				<a style="font-weight:bold">
+					<script>
+						var win = window.location;
+						document.write(" - window.location:  " + win + "<br>");
+						var win2 = toString(win);
+						document.write(" - function(toString):  " + win2 + "<br>");
+					</script>
+				</a>
+			</span>
+		</p>
+		<p>
+			The hash property returns the “fragment identifier” portion of the URL, if there is one: a hash mark (#) followed by an element ID.
+		</p>
+		<p>
+			<a style="font-weight:bold"> 2) Loading New Documents </a><br>
+			<span class="ex">
+				The assign() method of the Location object makes the window load and display the document at the URL you specify.<br>
+			</span>
+		</p>
+
+		<h2><a id="C3"> 3. Browser and Screen Information </a></h2>
+		<p>
+			Scripts sometimes need to obtain information about the web browser in which they are running or the desktop on which the browser appears.
+			Navigator and Screen objects, respectively, provide information that allows a script to customize its behavior based on its environment. <br>
+		</p>
+		<p>
+			<a style="font-weight:bold"> 1) The Navigator Object </a><br>
+			The navigator property of a Window object refers to a Navigator object that contains
+			browser vendor and version number information.<br>
+		</p>
+		<p>
+			<span class="ex">
+				In the past, the Navigator object was commonly used by scripts to determine if they
+				were running in Internet Explorer or Netscape. <br> This “browser-sniffing” approach is
+				problematic because it requires constant tweaking as new browsers and new versions
+				of existing browsers are introduced.<br>
+				Browser sniffing is sometimes still valuable, however, such as when you need to work
+				around a specific bug that exists in a specific version of a specific browser.
+			</span>
+		</p>
+
+		<p>
+			<span style="font-weight:bold">
+				2) Properties for browser sniffing<br>
+			</span>
+		</p>
+		<p>
+			<span style="font-weight:bold">
+				appName: <br>
+			</span>
+			<a class="ex">
+				The full name of the web browser. In IE, this is "Microsoft Internet Explorer".<br>
+			</a>
+		</p>
+		<p>
+			<span style="font-weight:bold">
+				appVersion: <br>
+			</span>
+			<a class="ex">
+				This property typically begins with a number and follows that with a detailed string that contains browser vendor and version information.<br>
+			</a>
+		</p>
+		<p>
+			<span style="font-weight:bold">
+				userAgent: <br>
+			</span>
+			<a class="ex">
+				The string that the browser sends in its USER-AGENT HTTP header.<br>
+			</a>
+		</p>
+		<p>
+			<span style="font-weight:bold">
+				platform: <br>
+			</span>
+			<a class="ex">
+				A string that identifies the operating system on which
+				the browser is running.<br>
+			</a>
+		</p>
+		<p>
+			<span style="font-weight:bold">
+				3) The Screen Object<br>
+			</span>
+			The screen property of a Window object refers to a Screen object that provides information about the size of the user's display and the number of colors available on it.
+		</p>
+		<p>
+			<span class="ex">
+				The width and height properties specify the size of the display in pixels. <br>
+				The availWidth and availHeight properties specify the display size that is actually available; <br>
+				they exclude the space required by features such as a desktop taskbar. <br>
+			</span>
+		</p>
+		<p>
+			<span style="font-weight:bold">
+				4) Dialog Boxes <br>
+			</span>
+			The Window object provides three methods for displaying simple dialog boxes to the user.<br>
+		<p>
+			<span class="ex">
+				alert() displays a message to the user and waits for the user to dismiss the dialog.<br>
+				confirm() displays a message, waits for the user to click an OK or Cancel button and
+				returns a boolean value.<br>
+				And prompt() displays a message, waits for the user to enter a
+				string, and returns that string.<br>
+			</span>
+		</p>
+		<p>
+			<span class="ex">
+				example: <br>
+				do {<br>
+				var name = prompt("What is your name?");     // Get a string <br>
+				var correct = confirm("You entered '" + name + "'.\n" +     // Get a boolean  <br>
+				"Click Okay to proceed or Cancel to re-enter."); <br>
+				} while(!correct) <br>
+				alert("Hello, " + name);     // Display a plain message <br>
+			</span>
+		</p>
+
+		<p>
+			<span style="font-weight:bold">
+				5) Error Handling <br>
+			</span>
+			The onerror property of a Window object is an event handler that is invoked when an uncaught exception propagates all the way up the call stack and an error message is
+			about to be displayed in the browser's JavaScript console<br>
+		<p>
+
+
+
+			<h2><a id="C4"> 4. Document Elements As Window Properties  </a></h2>
+		<p>
+			If you name an element in your HTML document using the id attribute, and if the
+			Window object does not already have a property by that name, the Window object is
+			given a nonenumerable property whose name is the value of the id attribute and whose
+			name is the HTMLElement object that represents that document element.
+		</p>
+
+
+		<p>
+			<span style="font-weight:bold">
+				1) the document.getElementById() method <br>
+			</span>
+
+			<span class="ex">
+				The id attributes you use in your HTML documents become global variables accessible to your scripts.<br>
+			</span>
+		</p>
+
+		<p>
+			<span class="ex">
+				* If your document includes the element &lt;button id="okay"&gt;,  you can refer to that element using the global variable okay.
+			</span>
+		</p>
+		<p>
+			<span class="ex">
+				example(look up document elements by the value of their HTML id attribute):<br>
+				var ui = ["input","prompt","heading"];     // An array of element ids<br>
+				ui.forEach(function(id) {     // For each id look up the element<br>
+				ui[id] = document.getElementById(id);     // and store it in a property<br>
+				});<br>
+			</span>
+		</p>
+		<p>
+			<span class="ex">
+				* After running this code, ui.input, ui.prompt, and ui.heading refer to document elements.
+			</span>
+		</p>
+		<p>
+			<span class="ex">
+				* A script could use the global variables input and heading instead of ui.input and ui.heading.
+			</span>
+		</p>
+
+		<p>
+			<span style="font-weight:bold">
+				2) Other elements... <br>
+			</span>
+			Any HTML element with an id attribute will become the value of a global variable, assuming the ID is not already used by the Window object.<br>
+		</p>
+		<p>
+			<span class="ex">
+				* The following HTML elements also behave this way when given a name attribute:<br>
+				a<br>
+				applet<br>
+				area<br>
+				embed<br>
+				form<br>
+				frame<br>
+				frameset<br>
+				iframe<br>
+				img<br>
+				object<br>
+			</span>
+		</p>
+		<p>
+			<span class="ex">
+				* There is a special case for &lt;iframe &gt; elements with a name or id attribute.:<br>
+				The implicitly
+				created variable for these elements refers not to the Element object that represents the
+				element itself, but to the Window object that represents the nested browser frame
+				created by the  &lt;iframe &gt; element.
+			</span>
+		</p>
+
+
+		<h2><a id="C5"> 5. Multiple Windows and Frames  </a></h2>
+		<p>
+			A single web browser window on your desktop may contain several tabs. Each tab is
+			an independent browsing context.
+		</p>
+		<p>
+			But windows are not always isolated from one another. A script in one window or tab
+			can open new windows or tabs, and when a script does this, the windows can interact
+			with one another and with one another’s documents.
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 1) Opening and Closing Windows </a><br>
+			You can open a new web browser window with the open() method of the Window object. <br>
+			Window.open() loads a
+			specified URL into a new or existing window and returns the Window object that
+			represents that window.
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 2) Relationships Between Frames </a><br>
+
+		</p>
+
+		<p>
+			<a style="font-weight:bold"> 3) JavaScript in Interacting Windows </a><br>
+		</p>
+
+	</section>
+	<footer>  </footer>
+	</div>
+
+</body>
+</html>
